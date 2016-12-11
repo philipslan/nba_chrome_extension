@@ -41,7 +41,8 @@
                                 <h4 ng-if="!game.clock=='' && game.hTeam.linescore.length">
                                     Quarter {{game.period.current}} - {{game.clock}} 
                                 </h4>
-                                <h4 ng-if="game.clock=='' && game.hTeam.linescore.length">End of Game</h4>
+                                <h4 ng-if="game.clock=='' && game.hTeam.linescore.length && !game.period.isEndOfPeriod && !game.period.isHalftime">End of Game</h4>
+                                <h4 ng-if="game.clock=='' && game.hTeam.linescore.length && (game.period.isEndOfPeriod || game.period.isHalftime)">End of Period</h4>
                                 <h5><img src="{{game.hTeam.img}}"> <b>{{game.hTeam.score}}</b> - <b>{{game.vTeam.score}}</b> <img src="{{game.vTeam.img}}"></h5>
                             </div>
                             <div class="row">
