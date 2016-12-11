@@ -15,7 +15,7 @@
         };
         fetchResult();
         var timer = $interval(fetchResult, 3000);
-        $scope.$on("$destroy", function(){
+        $scope.$on("$destroy", function () {
             $interval.cancel(timer);
             timer = undefined;
         });
