@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="nbaBoxScore" ng-controller="boxScore">
+<head>
+    <title>NBA Box Scores</title>
+    <link rel="stylesheet" type="text/css" href="assets/bootswatch.min.css">
+    <style type="text/css">
+        body {
+            min-width: 500px;
+        }
+        .panel {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .row:first-child {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6" ng-repeat="game in games">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{game.hTeam.triCode}} vs. {{game.vTeam.triCode}}</div>
+                    <div class="panel-body">
+                        {{game.hTeam.score}} - {{game.vTeam.score}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="assets/angular.min.js"></script>
+<script src="popup.js"></script>
+</html>

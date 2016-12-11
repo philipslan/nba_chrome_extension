@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "NBA Box Scores",
+  "description": "NBA Live Box Scores",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "assets/icon.png",
+    "default_popup": "popup.html",
+    "default_title": "NBA Box Scores"
+  },
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+B"
+      }
+    }
+  },
+  "permissions": [
+    "<all_urls>"
+  ]
+}
