@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="BoxScore" ng-controller="nbaBoxScore">
+<html ng-app="BoxScore" ng-controller="nflBoxScore">
 <head>
-    <title>NBA Box Scores</title>
+    <title>NFL Box Scores</title>
     <link rel="stylesheet" type="text/css" href="assets/bootswatch.min.css">
     <style type="text/css">
         body {
@@ -37,19 +37,19 @@
 </head>
 <body>
     <div class="container">
-        <a href="nfl.html" accesskey="b"></a>
+        <a href="popup.html" accesskey="b"></a>
         <div class="row">
             <div class="col-xs-6" ng-repeat="game in games">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="col-xs-12">
                             <div class="row">
-                                <h4 ng-if="game.hTeam.linescore.length == 0">--</h4>
-                                <h4 ng-if="!game.clock=='' && game.hTeam.linescore.length">
-                                    Quarter {{game.period.current}} - {{game.clock}} 
-                                </h4>
-                                <h4 ng-if="game.clock=='' && game.hTeam.linescore.length">End of Game</h4>
-                                <h5><img src="{{game.hTeam.img}}"> <b>{{game.hTeam.score}}</b> - <b>{{game.vTeam.score}}</b> <img src="{{game.vTeam.img}}"></h5>
+                                <h4 ng-if="game.qtr=='Final'">Final</h4>
+                                <h4 ng-if="game.qtr=='Pregame'">Pregame</h4>
+                                <h4 ng-if="game.qtr=='Halftime'">Halftime</h4>
+                                <h4 ng-if="game.qtr==null">--</h4>
+                                <h4 ng-if="game.qtr!='Final' && game.qtr!='Halftime' && game.qtr!=null">Quarter {{game.qtr}} - {{game.clock}}</h4>
+                                <h5><img src="http://i.nflcdn.com/static/site/7.4/img/logos/teams-matte-80x53/{{game.home.abbr}}.png"> <b>{{game.home.score.T}}</b> - <b>{{game.away.score.T}}</b> <img src="http://i.nflcdn.com/static/site/7.4/img/logos/teams-matte-80x53/{{game.away.abbr}}.png"></h5>
                             </div>
                             <div class="row">
                                 <div class="col-xs-2 col-xs-offset-2"><b>Q1</b></div>
@@ -58,12 +58,18 @@
                                 <div class="col-xs-2"><b>Q4</b></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-2">{{game.hTeam.triCode}}</div>
-                                <div class="col-xs-2" ng-repeat="quarter in game.hTeam.linescore">{{quarter.score}}</div>
+                                <div class="col-xs-2">{{game.home.abbr}}</div>
+                                <div class="col-xs-2"><b>{{game.home.score[1]}}</b></div>
+                                <div class="col-xs-2"><b>{{game.home.score[2]}}</b></div>
+                                <div class="col-xs-2"><b>{{game.home.score[3]}}</b></div>
+                                <div class="col-xs-2"><b>{{game.home.score[4]}}</b></div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-2">{{game.vTeam.triCode}}</div>
-                                <div class="col-xs-2" ng-repeat="quarter in game.vTeam.linescore">{{quarter.score}}</div>
+                                <div class="col-xs-2">{{game.away.abbr}}</div>
+                                <div class="col-xs-2"><b>{{game.away.score[1]}}</b></div>
+                                <div class="col-xs-2"><b>{{game.away.score[2]}}</b></div>
+                                <div class="col-xs-2"><b>{{game.away.score[3]}}</b></div>
+                                <div class="col-xs-2"><b>{{game.away.score[4]}}</b></div>
                             </div>
                         </div>
                     </div>

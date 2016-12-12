@@ -1,7 +1,7 @@
 (function () {
     "use strict";
-    var app = angular.module('nbaBoxScore', []);
-    app.controller('boxScore', function ($scope, $http, $interval) {
+    var app = angular.module('BoxScore', []);
+    app.controller('nbaBoxScore', function ($scope, $http, $interval) {
         var fetchResult = function () {
             var date = (new Date()).toLocaleDateString("en-US").split("/");
             var dateString = date[2] + date[0] + date[1];
@@ -16,6 +16,21 @@
         fetchResult();
         var timer = $interval(fetchResult, 3000);
         $scope.$on("$destroy", function () {
+            $interval.cancel(timer);
+            timer = undefined;
+        });
+    });
+    app.controller('nflBoxScore', function ($scope, $http, $interval) {
+        var fetchResult = function () {
+            var date = (new Date()).toLocaleDateString("en-US").split("/");
+            var dateString = date[2] + date[0] + date[1];
+            $http.get(`http://www.nfl.com/liveupdate/scores/scores.json`).success(function (data) {
+                $scope.games = data;
+            });
+        };
+        fetchResult();
+        var timer = $interval(fetchResult, 3000);
+        $scope.$on("$destroy", function(){
             $interval.cancel(timer);
             timer = undefined;
         });
