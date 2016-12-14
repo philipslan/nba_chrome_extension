@@ -1,0 +1,23 @@
+body {
+    min-width: 570px;
+    background-color: #dedede;
+}
+.panel {
+    margin-bottom: 10px;
+}
+.row:first-child {
+    margin-top: 10px;
+}
+.col-xs-6 {
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+}
+h4,h5 {
+    text-align: center;
+}
+img {
+    width: 30px;
+}
+p {
+    text-align: center;
+}
