@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Live Box Scores",
+  "name": "Live Scores",
   "description": "Live Box Scores for the NBA and NFL. Use Ctrl/Cmd + B to open chrome extension",
-  "version": "1.0",
+  "version": "1.1",
   "browser_action": {
     "default_icon": "assets/icon.png",
     "default_popup": "nba.html",

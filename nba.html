@@ -19,13 +19,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="row">
-                            <h4 ng-if="game.hTeam.linescore.length == 0">--</h4>
-                            <h4 ng-if="!game.clock=='' && game.hTeam.linescore.length">
-                                Quarter {{game.period.current}} - {{game.clock}} 
-                            </h4>
-                            <h4 ng-if="game.clock=='' && game.hTeam.linescore.length && !game.period.isEndOfPeriod && !game.period.isHalftime">End of Game</h4>
-                            <h4 ng-if="game.clock=='' && game.hTeam.linescore.length && game.period.isEndOfPeriod && !game.period.isHalftime">End of Period</h4>
-                            <h4 ng-if="game.clock=='' && game.hTeam.linescore.length && game.period.isEndOfPeriod && game.period.isHalftime">Half Time</h4>
+                            <h4>{{game.clock}}</h4>
                             <h5><img src="{{game.hTeam.img}}"> <b>{{game.hTeam.score}}</b> - <b>{{game.vTeam.score}}</b> <img src="{{game.vTeam.img}}"></h5>
                         </div>
                         <div class="row">
@@ -33,14 +27,15 @@
                             <div class="col-xs-2"><b>Q2</b></div>
                             <div class="col-xs-2"><b>Q3</b></div>
                             <div class="col-xs-2"><b>Q4</b></div>
+                            <div class="col-xs-2" ng-if="game.hTeam.linescore.length > 4"><b>OT</b></div>
                         </div>
                         <div class="row">
                             <div class="col-xs-2">{{game.hTeam.triCode}}</div>
-                            <div class="col-xs-2" ng-repeat="quarter in game.hTeam.linescore">{{quarter.score}}</div>
+                            <div class="col-xs-2" ng-repeat="quarter in game.hTeam.linescore track by $index">{{quarter}}</div>
                         </div>
                         <div class="row">
                             <div class="col-xs-2">{{game.vTeam.triCode}}</div>
-                            <div class="col-xs-2" ng-repeat="quarter in game.vTeam.linescore">{{quarter.score}}</div>
+                            <div class="col-xs-2" ng-repeat="quarter in game.vTeam.linescore track by $index">{{quarter}}</div>
                         </div>
                     </div>
                 </div>
